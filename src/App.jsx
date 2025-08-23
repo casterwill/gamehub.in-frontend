@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import './App.css'
-import GameCard from './components/game-list/game-card.jsx'
 import Navbar from './components/game-list/navbar.jsx'
 
-function App() {
-  const [users, setUsers] = useState(0)
+import GameStore from './pages/GameStorePage.jsx'
 
+import { Routes, Route } from 'react-router-dom'
+
+function App() {
   return (
     <>
       <Navbar />
-      <GameCard />
+      
+      <Routes>
+        <Route path="/" element={<GameStore />} />
+      </Routes>
     </>
   )
 }

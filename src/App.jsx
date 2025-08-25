@@ -6,13 +6,13 @@ import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-base-200">
       <Navbar />
       
-      <Routes>
+      <Routes>  
         <Route path="/" element={<GameStore />} />
       </Routes>
-    </>
+    </div>
   )
 }
 

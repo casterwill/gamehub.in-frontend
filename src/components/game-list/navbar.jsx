@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <div className="bg-base-100/80 backdrop-blur-lg border-b border-base-content/10 sticky top-0 z-50">
@@ -27,8 +29,15 @@ export default function Navbar() {
 
         {/* RIGHT SECTION */}
         <div className="flex items-center gap-1">
-          <button className="btn btn-outline btn-success">sign in</button>
-          <button className="btn btn-active btn-success">sign up</button>
+          <Link to="/login" className="btn btn-outline btn-success">
+            sign in
+          </Link>
+          <Link to="/login" className="btn btn-active btn-success">
+            sign up
+          </Link>
+
+          {/* <button className="btn btn-outline btn-success">sign in</button>
+          <button className="btn btn-active btn-success">sign up</button> */}
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import Navbar from "./components/game-list/navbar.jsx";
 
 import GameStore from "./pages/GameStorePage.jsx";
-import LoginPage from "./pages/AuthenticationPage.jsx";
+import SignInPage from "./pages/SignInPage.jsx";
+import SignUpPage from "./pages/SignUpPage.jsx";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -12,7 +13,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<GameStore />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </div>
   );

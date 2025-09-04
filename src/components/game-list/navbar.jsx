@@ -29,10 +29,10 @@ export default function Navbar() {
 
         {/* RIGHT SECTION */}
         <div className="flex items-center gap-1">
-          <Link to="/login" className="btn btn-outline btn-success">
+          <Link to="/signin" className="btn btn-outline btn-success">
             sign in
           </Link>
-          <Link to="/login" className="btn btn-active btn-success">
+          <Link to="/signup" className="btn btn-active btn-success">
             sign up
           </Link>
 

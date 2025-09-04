@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import GameCard from "../components/game-list/game-card.jsx";
 import { useGamesStore } from "../store/useGamesStore.js";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 function GameStorePage() {
   const { games, loading, error, fetchGames } = useGamesStore();

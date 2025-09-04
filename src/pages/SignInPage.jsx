@@ -1,16 +1,25 @@
-import { useEffect } from "react";
 import { useAuthUser } from "../auth/useAuthUser.js";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function AuthenticationPage() {
-  const { token, login, loading, formData, setFormData } = useAuthUser();
+  const { token, signin, loading, formData, setFormData } = useAuthUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <form
         className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
-        onSubmit={login}
+        onSubmit={signin}
       >
-        <legend className="fieldset-legend">Login</legend>
+        <legend className="fieldset-legend text-2xl">Sign in</legend>
 
         <label className="label">Email</label>
         <input
@@ -36,7 +45,7 @@ function AuthenticationPage() {
         <button
           className="btn btn-neutral mt-4"
           type="submit"
-          disabled={loading}
+          disabled={!formData.email || !formData.password || loading}
         >
           {loading ? (
             <span className="loading loading-spinner loading-sm" />
@@ -45,17 +54,12 @@ function AuthenticationPage() {
           )}
         </button>
 
-        <button
-          className="btn btn-neutral mt-4"
-          type="submit"
-          disabled={loading}
-        >
-          {loading ? (
-            <span className="loading loading-spinner loading-sm" />
-          ) : (
-            <>Sign up</>
-          )}
-        </button>
+        <div className="flex items-center justify-center mt-4">
+          <span className="font-extrabold text-xs">New here?</span>
+          <Link to={"/signup"} className="btn btn-link">
+            <span>Create an account</span>
+          </Link>
+        </div>
       </form>
     </div>
   );

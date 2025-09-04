@@ -23,13 +23,13 @@ export const useAuthUser = create((set, get) => ({
     }
   }),
 
-  login: async (e) => {
+  signin: async (e) => {
     e.preventDefault();
     set({ loading: true });
 
     try {
       const { email, password } = get().formData;
-      const response = await axios.post(`${baseURL}/api/auth/login`, {
+      const response = await axios.post(`${baseURL}/api/auth/signin`, {
         email, password
       });
       toast.success("Login successful!");
@@ -38,6 +38,25 @@ export const useAuthUser = create((set, get) => ({
     } catch (error) {
       set({ error: "Something went wrong"});
       toast.error("Login failed. Please check your credentials.");
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  signup: async (e) => {
+    e.preventDefault();
+    set({ loading: true });
+    try {
+      const { username, email, password } = get().formData;
+      const response = await axios.post(`${baseURL}/api/auth/signup`, {
+        username, email, password
+      });
+      toast.success("Signup successful!");
+      get().resetForm();
+      set({ token: response.data.token, error: null });
+    } catch (error) {
+      set({ error: "Something went wrong"});
+      toast.error("Signup failed. Please try again.");
     } finally {
       set({ loading: false });
     }
